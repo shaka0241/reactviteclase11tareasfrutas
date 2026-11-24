@@ -1,0 +1,2 @@
+/* Activa Tailwind CSS para poder usar sus utilidades en los className de JSX. */
+@import "tailwindcss";
