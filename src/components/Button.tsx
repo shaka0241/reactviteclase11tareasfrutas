@@ -1,29 +1,26 @@
-import React from "react";
 import type { ButtonProps } from "../types";
 
-// Botón reutilizable: su aspecto y comportamiento se configuran mediante props.
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   texto,
   onClick,
   variante = "primario",
-}) => {
-  // Cada variante traduce una intención (acción normal, peligrosa o neutra)
-  // a las clases visuales correspondientes de Tailwind.
+}: ButtonProps) => {
   const estilosVariante = {
-    primario: "bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-200",
-    peligro: "bg-rose-600 hover:bg-rose-700 text-white shadow-rose-200",
-    neutro: "bg-slate-200 hover:bg-slate-300 text-slate-800 shadow-slate-100",
+    primario: "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/30",
+    secundario:
+      "bg-slate-700 hover:bg-slate-800 text-white shadow-slate-500/30",
+    peligro: "bg-rose-600 hover:bg-rose-700 text-white shadow-rose-500/30",
   };
 
   return (
-    // El evento se delega a la función recibida y la variante selecciona
-    // las clases dinámicas que completan los estilos comunes del botón.
     <button
       onClick={onClick}
-      className={`px-4 py-2 rounded-lg font-medium shadow-md cursor-pointer 
-        transform transition-all duration-300 ease-in-out 
-        hover:-translate-y-0.5 hover:shadow-lg active:scale-95 
-        ${estilosVariante[variante]}`}
+      className={`
+        px-5 py-2.5 rounded-lg font-medium shadow-md cursor-pointer
+        transition-all duration-200 ease-in-out
+        hover:-translate-y-0.5 hover:shadow-lg active:scale-95
+        ${estilosVariante[variante]}
+      `}
     >
       {texto}
     </button>
