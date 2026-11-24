@@ -7,7 +7,7 @@ export interface Tarea {
 export interface ButtonProps {
   texto: string;
   onClick: () => void;
-  variante?: "primario" | "secundario" | "peligro";
+  variante?: "primario" | "peligro" | "neutro";
 }
 
 export interface ListaFrutasProps {

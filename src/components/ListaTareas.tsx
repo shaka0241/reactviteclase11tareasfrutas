@@ -1,18 +1,21 @@
+import React from "react";
 import type { ListaTareasProps } from "../types";
 
-export const ListaTareas = ({ tareas }: ListaTareasProps) => {
+// React.FC<Props> tipa un componente funcional y permite que TypeScript compruebe
+// sus propiedades. Se usa si queremos declarar explícitamente ese tipo; es
+// opcional, también puede tiparse el parámetro directamente.
+export const ListaTareas: React.FC<ListaTareasProps> = ({ tareas }) => {
   return (
-    <section className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-      <h2 className="text-xl font-bold text-slate-800 mb-4">Lista de Tareas</h2>
+    <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+      <h2 className="text-xl font-bold text-slate-800 mb-4">
+        📋 Lista de Tareas
+      </h2>
 
-      {/* Renderizado condicional con operador ternario */}
       {tareas.length === 0 ? (
         <div className="p-6 text-center bg-amber-50 border border-amber-200 rounded-lg text-amber-800">
-          <p className="font-medium">
-            No hay tareas pendientes en este momento.
-          </p>
+          <p className="font-medium">No hay tareas pendientes en la lista.</p>
           <p className="text-sm text-amber-600 mt-1">
-            Usa el botón superior para restaurar las tareas de prueba.
+            Usa los botones superiores para cargar o añadir tareas.
           </p>
         </div>
       ) : (
@@ -26,16 +29,16 @@ export const ListaTareas = ({ tareas }: ListaTareasProps) => {
                 className={
                   tarea.completada
                     ? "line-through text-slate-400"
-                    : "text-slate-700 font-medium"
+                    : "text-slate-800 font-medium"
                 }
               >
                 {tarea.nombre}
               </span>
               <span
-                className={`text-xs px-2.5 py-1 rounded-full font-semibold ${
+                className={`text-xs px-2.5 py-1 rounded-full font-medium ${
                   tarea.completada
-                    ? "bg-emerald-100 text-emerald-700"
-                    : "bg-slate-200 text-slate-600"
+                    ? "bg-green-100 text-green-700"
+                    : "bg-yellow-100 text-yellow-700"
                 }`}
               >
                 {tarea.completada ? "Completada" : "Pendiente"}
@@ -44,6 +47,6 @@ export const ListaTareas = ({ tareas }: ListaTareasProps) => {
           ))}
         </ul>
       )}
-    </section>
+    </div>
   );
 };
